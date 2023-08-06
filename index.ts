@@ -1,14 +1,15 @@
 import { endWith, finalize } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+// https://www.learnrxjs.io/learn-rxjs/operators/combination/endwith
+
 const source$ = of('Hello', 'Friend');
 
 source$
   // emit on completion
   .pipe(
-    endWith('Goodbye', 'Friend'),
+    endWith('end', '...'),
     // this function is invoke when unsubscribe methods are called
     finalize(() => console.log('_ FIN _'))
   )
-  // 'Hello', 'Friend', 'Goodbye', 'Friend'
   .subscribe((val) => console.log(val));
